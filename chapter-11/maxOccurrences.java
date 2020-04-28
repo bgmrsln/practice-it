@@ -7,28 +7,18 @@
 */
 
 public static int maxOccurrences(List<Integer> list) {
-    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-    Iterator<Integer> i = list.iterator();
-    
-    while (i.hasNext()) {
-        int num = i.next();
-        if (map.containsKey(num)) {
-            map.put(num, map.get(num) + 1);
-        } else {
-            map.put(num, 1);
+   Map<Integer,Integer> map=new HashMap<Integer,Integer>();
+    int max=0;
+    for(int n: list){
+        if(map.containsKey(n)){
+            map.put(n,map.get(n)+1);
+        }else{
+            map.put(n,1);
         }
-    }
-    
-    Set<Integer> setKey = map.keySet();
-    i = setKey.iterator();
-    int max = 0;
-    
-    while(i.hasNext()) {
-        int current = map.get(i.next());
-        if (current > max) {
-            max = current;
+        if(map.get(n)>max){
+            max=map.get(n);
         }
+        
     }
-    
     return max;
 }
